@@ -1,0 +1,86 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textSize="60px"
+        android:text="Elige una opción:" />
+
+    <Button
+        android:id="@+id/btnEstudiantesCiclo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Ver estudiantes por ciclo" />
+
+    <Button
+        android:id="@+id/btnEstudiantesCurso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Ver estudiantes por curso" />
+
+    <Button
+        android:id="@+id/btnEstudiantesCicloCurso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Ver estudiantes por ciclo y curso"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/btnEstudiantesTodos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Ver todos los estudiantes" />
+
+    <Button
+        android:id="@+id/btnProfesoresCiclo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Ver profesores por ciclo" />
+
+    <Button
+        android:id="@+id/btnProfesoresCurso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Ver profesores por curso" />
+
+    <Button
+        android:id="@+id/btnProfesoresCicloCurso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Ver profesores por ciclo y curso"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/btnProfesoresTodos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Ver todos los profesores" />
+
+    <Button
+        android:id="@+id/btnTodos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Ver todos los profesores y alumnos" />
+
+</LinearLayout>
