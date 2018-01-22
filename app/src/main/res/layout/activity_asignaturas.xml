@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="TextView" />
+            android:text="Asignatura:" />
 
         <EditText
             android:id="@+id/txtNombreAs"
@@ -27,6 +27,7 @@
             android:layout_weight="1"/>
     </LinearLayout>
 
+    
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="TextView" />
+            android:text="Horas:" />
 
         <EditText
             android:id="@+id/txtHorasAs"

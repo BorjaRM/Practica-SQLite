@@ -39,6 +39,7 @@
             android:layout_weight="1"
             android:text="Horas:" />
 
+
         <TextView
             android:id="@+id/horasAsig"
             android:layout_width="wrap_content"
