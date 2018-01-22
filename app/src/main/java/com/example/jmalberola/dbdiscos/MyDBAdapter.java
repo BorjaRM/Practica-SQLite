@@ -9,8 +9,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class MyDBAdapter {
     // Definiciones y constantes
-    private static final String DATABASE_NAME = "centro.db";
+    private static final String DATABASE_NAME = "asignaturas.db";
     private static final String DATABASE_TABLE = "usuarios";
+    private static final String DATABASE_TABLE_ASIG = "asignaturas";
     private static final int DATABASE_VERSION = 1;
 
     // Campos tabla usuarios
@@ -23,9 +24,14 @@ public class MyDBAdapter {
     private static final String NOTA_MEDIA = "nota_media";
     private static final String DESPACHO = "despacho";
 
+    // Campos tabla asignaturas
+    private static final String NOMBRE_ASIG = "nombre";
+    private static final String HORAS_ASIG = "horas";
+
     // Instrucciones
     private static final String DATABASE_CREATE = "CREATE TABLE "+DATABASE_TABLE+" (_id integer primary key autoincrement, tipo text, nombre text, edad text, ciclo text, curso text, nota_media text, despacho text);";
-    private static final String DATABASE_DROP = "DROP TABLE IF EXISTS "+DATABASE_TABLE+";";
+    private static final String DATABASE_DROP = "DROP TABLE IF EXISTS "+DATABASE_TABLE+"; DROP TABLE IF EXISTS "+DATABASE_TABLE_ASIG+";";
+    private static final String DATABASE_CREATE_ASIG = "CREATE TABLE "+DATABASE_TABLE_ASIG+" (_id integer primary key autoincrement, nombre text, horas text);";
 
     // Queries
     private static String[] camposTabla;
@@ -72,6 +78,27 @@ public class MyDBAdapter {
         newValues.put(NOTA_MEDIA,u.getNotaMedia());
         newValues.put(DESPACHO,u.getDespacho());
         db.insert(DATABASE_TABLE,null,newValues);
+    }
+
+    public void insertarAsignatura(Asignatura a){
+        //Creamos un nuevo registro de valores a insertar
+        ContentValues newValues = new ContentValues();
+        //Asignamos los valores de cada campo
+        newValues.put(NOMBRE_ASIG,a.getNombre());
+        newValues.put(HORAS_ASIG,a.getHoras());
+        db.insert(DATABASE_TABLE_ASIG,null,newValues);
+    }
+
+    public Cursor recuperarAsignaturas() {
+        camposTabla = null;
+        where = null;
+        argsWhere = null;
+        groupBy = null;
+        having = null;
+        orderBy = "nombre ASC";
+
+        Cursor cursor = db.query(DATABASE_TABLE_ASIG, camposTabla, where, argsWhere, groupBy, having, orderBy);
+        return cursor;
     }
 
     public void cargarDatosPrueba() {
@@ -143,6 +170,18 @@ public class MyDBAdapter {
         Cursor cursor = db.query(DATABASE_TABLE, camposTabla, where, argsWhere, groupBy, having, orderBy);
         return cursor;
     }
+
+    /*public Cursor recuperarCiclosYCursos(String tipoUsuario) {
+        camposTabla = new String[]{ID,CICLO,CURSO};
+        where = TIPO+"=?";
+        argsWhere = new String[]{tipoUsuario};
+        groupBy = null;
+        having = null;
+        orderBy = "curso ASC";
+
+        Cursor cursor = db.query(DATABASE_TABLE, camposTabla, where, argsWhere, groupBy, having, orderBy);
+        return cursor;
+    }*/
 
     public Cursor recuperarEstudiantesCiclo(String ciclo) {
         camposTabla = null;
@@ -245,6 +284,7 @@ public class MyDBAdapter {
 
         @Override
         public void onCreate(SQLiteDatabase db) {
+            db.execSQL(DATABASE_CREATE_ASIG);
             db.execSQL(DATABASE_CREATE);
         }
 

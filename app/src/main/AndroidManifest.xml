@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".NuevoRegistro" />
-        <activity android:name=".Lista_usuarios"></activity>
+        <activity android:name=".Lista_usuarios" />
+        <activity android:name=".Asignaturas"></activity>
     </application>
 
 </manifest>

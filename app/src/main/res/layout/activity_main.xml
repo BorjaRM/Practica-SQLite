@@ -83,4 +83,11 @@
         android:layout_weight="1"
         android:text="Ver todos los profesores y alumnos" />
 
+    <Button
+        android:id="@+id/btnAsignaturas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Administrar Asignaturas" />
+
 </LinearLayout>

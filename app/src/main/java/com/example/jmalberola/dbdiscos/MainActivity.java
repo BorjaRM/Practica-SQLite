@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,9 +14,10 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity implements View.OnClickListener{
     private Button btnEstudiantesCiclo, btnEstudiantesCurso, btnEstudiantesCicloCurso, btnEstudiantesTodos,
-            btnProfesoresCiclo, btnProfesoresCurso, btnProfesoresCicloCurso, btnProfesoresTodos, btnTodos;
+            btnProfesoresCiclo, btnProfesoresCurso, btnProfesoresCicloCurso, btnProfesoresTodos, btnTodos, btnAsignaturas;
 
     private MyDBAdapter dbAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
         btnProfesoresCicloCurso = (Button) findViewById(R.id.btnProfesoresCicloCurso);
         btnProfesoresTodos = (Button) findViewById(R.id.btnProfesoresTodos);
         btnTodos = (Button) findViewById(R.id.btnTodos);
+        btnAsignaturas = (Button) findViewById(R.id.btnAsignaturas);
     }
 
     public void setListeners() {
@@ -60,6 +63,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
         btnProfesoresCicloCurso.setOnClickListener(this);
         btnProfesoresTodos.setOnClickListener(this);
         btnTodos.setOnClickListener(this);
+        btnAsignaturas.setOnClickListener(this);
     }
 
     @Override
@@ -110,8 +114,13 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        Intent intentListaUsuarios = new Intent(getApplicationContext(), Lista_usuarios.class);
-        intentListaUsuarios.putExtra("buttonId",v.getId());
-        startActivity(intentListaUsuarios);
+        if (v.getId() != btnAsignaturas.getId()) {
+            Intent intentListaUsuarios = new Intent(getApplicationContext(), Lista_usuarios.class);
+            intentListaUsuarios.putExtra("buttonId",v.getId());
+            startActivity(intentListaUsuarios);
+        } else {
+            Intent i = new Intent(getApplicationContext(), Asignaturas.class);
+            startActivity(i);
+        }
     }
 }
